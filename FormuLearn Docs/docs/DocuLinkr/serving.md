@@ -14,7 +14,7 @@ Serve your merged Docusaurus site locally with live-reloading.
 Run from the **root** of your Git repository (main site or linked subproject):
 
 ```bash
-doculinkr serve [--install]
+doculinkr serve [--install] [--site-name SITE_NAME]
 ```
 
 * By default, if `node_modules/` is missing, dependencies are installed automatically.
@@ -24,6 +24,6 @@ doculinkr serve [--install]
 ## Features
 
 * **Live Reload**: Edits to `docs/`, `src/`, or configuration files instantly refresh the browser.
-* **Unified Serve**: Works in both main-site mode and subproject mode without changing commands.
+* **Unified Serve**: Works in both main-site mode and subproject mode. In subproject mode, you **as of version 0.1.0**, must specify the site-name. If you don't remember it, you can see the site name under `.doculinkr/main` (run `ls .doculinkr/main` to see the options).  
 
 Now visit `http://localhost:3000/` to preview your documentation as you edit files.
