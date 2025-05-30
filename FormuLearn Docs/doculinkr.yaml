@@ -3,9 +3,9 @@
 site_name: FormuLearn Docs
 projects:
   # Example project entry; delete or replace after initial setup
-  - name: ExampleProject
-    path: docs/ExampleProject
-    git_path: https://github.com/your-org/ExampleProject.git
+  - name: DocuLinkr
+    path: docs/DocuLinkr
+    git_path: git@github.com:FormuLearn/DocuLinkr.git
     
 docusaurus:
   template: classic
