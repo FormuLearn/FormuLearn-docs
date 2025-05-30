@@ -20,15 +20,15 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://docs.formulearn.org/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'FormuLearn', // Usually your GitHub org/user name.
+  projectName: 'FormuLearn docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -51,6 +51,37 @@ const config = {
         },
         theme: {
           customCss: './src/css/custom.css',
+        },
+        sitemap: {
+          lastmod: 'date',
+          changefreq: 'monthly',
+          // default priority—will get overridden below
+          priority: 0.5,
+          filename: 'sitemap.xml',
+          createSitemapItems: async (params) => {
+            const { defaultCreateSitemapItems, ...rest } = params;
+            const items = await defaultCreateSitemapItems(rest);
+
+            return items
+              // 1. remove pagination URLs
+              .filter((item) => !item.url.includes('/page/'))
+              // 2. normalize & override priority
+              .map((item) => {
+                // extract path and remove trailing slash
+                let pathname = new URL(item.url).pathname;
+                if (pathname !== '/' && pathname.endsWith('/')) {
+                  pathname = pathname.slice(0, -1);
+                }
+
+                const isRoot = pathname === '/';
+                const isProjectsIndex = pathname === '/docs/projects';
+                // exactly one segment under /docs/projects
+                const isSubProjectIndex = /^\/docs\/projects\/[^/]+$/.test(pathname);
+
+                item.priority = (isRoot || isProjectsIndex || isSubProjectIndex) ? 1.0 : 0.5;
+                return item;
+              });
+          },
         },
       }),
     ],
