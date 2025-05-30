@@ -112,7 +112,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} FormuLearn B.V., Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} FormuLearn B.V. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
