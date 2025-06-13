@@ -6,6 +6,9 @@ projects:
   - name: DocuLinkr
     path: docs/DocuLinkr
     git_path: git@github.com:FormuLearn/DocuLinkr.git
+  - name: Symantex
+    path: docs/Symantex
+    git_path: git@github.com:FormuLearn/Symantex.git
     
 docusaurus:
   template: classic
